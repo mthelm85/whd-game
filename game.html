@@ -16,13 +16,13 @@
 
     const config = {
         type: Phaser.AUTO,
-        width: 1000,
-        height: 705,
+        width: 852,
+        height: 600,
         physics: {
             default: 'arcade',
             arcade: {
                 gravity: { y: 300 },
-                debug: false
+                debug: true
             }
         },
         scene: {
@@ -70,14 +70,14 @@
 
     function create ()
     {
-        this.add.image(500, 353, 'background');
+        this.add.image(426, 300, 'background');
 
         scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
 
         levels = this.physics.add.staticGroup();
-        levels.create(17, 715, false, false, false).setSize(1000, 10);
-        levels.create(17, 470, false, false, false).setSize(450, 10);
-        levels.create(759, 309, false, false, false).setSize(257, 10);
+        levels.create(17, 610, false, false, false).setSize(852, 10);
+        levels.create(17, 405, false, false, false).setSize(380, 10);
+        levels.create(649, 266, false, false, false).setSize(218, 10);
 
         player = this.physics.add.sprite(35, 35, 'whi').setBounce(0.2)
             .setCollideWorldBounds(true);
@@ -109,7 +109,7 @@
 
         coins = this.physics.add.group({
             key: 'coin',
-            repeat: 13,
+            repeat: 11,
             setXY: { x: 24, y: 0, stepX: 70 }
         });
 
@@ -145,7 +145,7 @@
             fontSize: 32,
         };
 
-        restartButton = this.add.text(380, 325, 'Play Again', buttonStyle)
+        restartButton = this.add.text(300, 260, 'Play Again', buttonStyle)
             .setVisible(false)
             .setInteractive({ useHandCursor: true })
             .on('pointerdown', () => location.reload());
@@ -182,7 +182,7 @@
         if (cursors.up.isDown && player.body.touching.down)
         {
             jumpSound.play();
-            player.setVelocityY(-400);
+            player.setVelocityY(-360);
         }
     }
 
@@ -195,7 +195,7 @@
             .setBounce(1)
             .setCollideWorldBounds(true)
             .setVelocity(Phaser.Math.Between(-100, 100), 0)
-            .setGravity(0, -200);
+            .setGravity(0, 0);
     }
 
     function collectCoin(player, coin)
