@@ -16,8 +16,8 @@
 
     const config = {
         type: Phaser.AUTO,
-        width: 1275,
-        height: 900,
+        width: 1000,
+        height: 705,
         physics: {
             default: 'arcade',
             arcade: {
@@ -70,16 +70,16 @@
 
     function create ()
     {
-        this.add.image(638, 450, 'background');
+        this.add.image(500, 353, 'background');
 
         scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
 
         levels = this.physics.add.staticGroup();
-        levels.create(17, 910, false, false, false).setSize(1272, 10);
-        levels.create(17, 595, false, false, false).setSize(573, 20);
-        levels.create(960, 390, false, false, false).setSize(330, 20);
+        levels.create(17, 715, false, false, false).setSize(1000, 10);
+        levels.create(17, 470, false, false, false).setSize(450, 10);
+        levels.create(759, 309, false, false, false).setSize(257, 10);
 
-        player = this.physics.add.sprite(65, 38, 'whi').setBounce(0.2)
+        player = this.physics.add.sprite(35, 35, 'whi').setBounce(0.2)
             .setCollideWorldBounds(true);
         player.body.setSize(45, 24);
 
@@ -109,7 +109,7 @@
 
         coins = this.physics.add.group({
             key: 'coin',
-            repeat: 17,
+            repeat: 13,
             setXY: { x: 24, y: 0, stepX: 70 }
         });
 
@@ -145,7 +145,7 @@
             fontSize: 32,
         };
 
-        restartButton = this.add.text(550, 450, 'Play Again', buttonStyle)
+        restartButton = this.add.text(380, 325, 'Play Again', buttonStyle)
             .setVisible(false)
             .setInteractive({ useHandCursor: true })
             .on('pointerdown', () => location.reload());
@@ -182,7 +182,7 @@
         if (cursors.up.isDown && player.body.touching.down)
         {
             jumpSound.play();
-            player.setVelocityY(-460);
+            player.setVelocityY(-400);
         }
     }
 
